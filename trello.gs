@@ -278,7 +278,7 @@ function clearLabelOfCard(id){
  */
 function createAttachmentAsCover(cardId, graph){
 
-  let attachUrl = 'https://heroku-puppeteer-pixela.herokuapp.com/?pixela-user=' + PIXELA_USER_NAME + '&pixela-graph=' + graph
+  let attachUrl = 'https://xxxxxxx.herokuapp.com/?pixela-user=' + PIXELA_USER_NAME + '&pixela-graph=' + graph
   let requestUrl = TRELLO_API_URL + '1/card/'+ cardId + '/attachments'
           + '?key=' + TRELLO_KEY
           + '&token=' + TRELLO_TOKEN;
