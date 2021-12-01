@@ -41,10 +41,15 @@ function doPost(e){
       pt = 5
       idLabel = TRELLO_CHOUJO_LABEL_ORANGE_ID
     }
+    //今日の分のスコアを増やす
     score = Number(ret.quantity) + pt
+    postGraph(PIXELA_CHOUJO_GRAPH_NAME, getTodayStr(),score.toString())
+
+    //ラベルを削除、カバー画像を更新
     clearLabelOfCard(cardId)
     createAttachmentAsCover(TRELLO_CHOUJO_TASK_MESSAGE_ID,PIXELA_CHOUJO_GRAPH_NAME)
-    putGraph(PIXELA_CHOUJO_GRAPH_NAME, getTodayStr(),score.toString())
+
+    //合計と今日の数字をメッセージカードのタイトルとして更新
     stats = getGraphStats(PIXELA_CHOUJO_GRAPH_NAME)
     updateCountOfMessageCard(TRELLO_CHOUJO_TASK_MESSAGE_ID, stats.totalQuantity, stats.todaysQuantity)
 
@@ -62,16 +67,20 @@ function doPost(e){
       pt = 5
       idLabel = TRELLO_CHOUNAN_LABEL_ORANGE_ID
     }
+    //今日の分のスコアを増やす
     score = Number(ret.quantity) + pt
+    postGraph(PIXELA_CHOUNAN_GRAPH_NAME, getTodayStr(),score.toString())
+
+    //ラベルを削除、カバー画像を更新
     clearLabelOfCard(cardId)
     createAttachmentAsCover(TRELLO_CHOUNAN_TASK_MESSAGE_ID,PIXELA_CHOUNAN_GRAPH_NAME)
-    putGraph(PIXELA_CHOUNAN_GRAPH_NAME, getTodayStr(),score.toString())
+
+    //合計と今日の数字をメッセージカードのタイトルとして更新
     stats = getGraphStats(PIXELA_CHOUNAN_GRAPH_NAME)
     updateCountOfMessageCard(TRELLO_CHOUNAN_TASK_MESSAGE_ID, stats.totalQuantity, stats.todaysQuantity)
 
   }
   
-  //notifyToSlack(message)
   logSpreadsheet(message)
 }
 
